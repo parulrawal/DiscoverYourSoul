@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign-up Page</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/Cssstylesheet.css">
+</head>
+<body>
+<div style="background-color: #103567">
+<h2 th:align="center" class="loginHead">Login</h2>
+<form id="loginForm" method="post" action="/add-Login" th:object="${user}">
+    <table>
+        <tr>
+            <td><label class="loginHead"><b>Email :</b></label> </td>
+            <td><input type="text" th:field="*{email}" id="email"></td>
+        </tr>
+        <tr>
+            <td><label class="loginHead"><b>Password :</b></label></td>
+            <td><input type="password" th:field="*{password}" id="password"></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" id="submit">
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+</body>
+</html>

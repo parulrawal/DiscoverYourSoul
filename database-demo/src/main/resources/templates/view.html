@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View-Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.3.5/jquery.datetimepicker.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.3.5/jquery.datetimepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.54/jquery.form-validator.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/Cssstylesheet.css">
+</head>
+<body>
+<form id="userDetailsForm" th:object="${visitor}">
+    <h3 th:align="center">Visitor Details Form</h3>
+    <a href="/login" class="logout">Logout</a>
+    <th:block th:align="center">
+    <label>Name</label>
+    <input type="text" th:field="*{name}" id="name"><br><br>
+
+    <label>Gender</label><br><br>
+    <label>Male</label></label><input type="radio" id="male" value="Male" th:field="*{gender}">
+    <label>Female</label><input type="radio" id="female" value="Female" th:field="*{gender}"><br><br>
+
+    <label>Email</label>
+    <input typ="email" id="email" th:field="*{email}"><br><br>
+    </th:block>
+    <input type="submit" id="save" value="Add">
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.3.5/jquery.datetimepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.54/jquery.form-validator.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+       /* $("#userDetailsForm").on('submit',function(){
+            alert("1");
+            var form = $("#userDetailsForm");
+            var formData = new FormData(form);
+
+            $.ajax({
+                type:'post',
+                 url:"/add-visitor",
+                 data: formData,
+                success: function(data) {
+                    toastr.success("Visitor added successfully");
+                 },
+                    error: function(response){
+                        toastr.error("Visitor could not be added");
+                    },
+                beforeSend: function(){
+                    $("#loader").show();
+                },
+                    complete : function(){
+                        location.reload();
+                    }
+            });
+        });*/
+
+        $("#save").click(function(){
+            var visitor=$("#userDetailsForm").serialize();
+            event.preventDefault();
+            $(this).prop('disabled', true);
+            toastr.options={
+                    "timeOut" :"11500",
+                    "showDuration":"3000"
+                    };
+            $.ajax({
+                type:"POST",
+                url:"/add-visitor",
+                data:visitor,
+                success:function(){
+                    toastr.success("Visitor added successfully");
+                    alert("success");
+                },
+                error:function(){
+                    toastr.error("Sorry, Unable to add visitor");
+                }
+            });
+        });
+
+    });
+
+
+</script>
+
+</body>
+</html>

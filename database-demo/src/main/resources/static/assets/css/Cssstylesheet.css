@@ -1,0 +1,109 @@
+@font-face {
+    font-family: beyondFamily;
+    src: url(beyond.otf);
+}
+.gifLoader{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    z-index: 99999;
+}
+.logout{
+   color:black;
+    float:right;
+    background-color:#FC913A ;
+    font-size:large;
+}
+*{
+    margin:0px;
+    padding:0px;
+}
+.bgimg{
+
+    width:100%;
+    background:url("cover.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    opacity:0.8;
+}
+.main{
+    background-color: #d1d6d6;
+    width: 100%;
+}
+.tagLine{
+    color: white;
+    text-align: center;
+    padding-top: 200px;
+    font-family: beyondFamily;
+    font-size: 76px;
+
+}
+/*
+.title{
+    width:100%;
+    height: 34%;
+    background:rgba(0,0,0,0.4);
+}
+*/
+.header{
+    background-color: #181638;
+    height:10%;
+    width: 100%;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 27px 20px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color:#FF4545;
+}
+.footerImg{
+    width:100%;
+    background:url("footer.jpg");
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    opacity:0.8;
+}
+.footerLine{
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-family: beyondFamily;
+    font-size: 20px;
+}
+.inputFooter{
+    background-color: transparent;
+    color: white;
+}
+.labelClass{
+    font-family: beyondFamily;
+    color:white;
+    padding-left: 123px;
+    padding-right: 22px;
+}
+.loginHead{
+    font-family: beyondFamily;
+    color:white;
+
+}
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Discover Your Soul</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/Cssstylesheet.css">
+
+</head>
+<body>
+<div class="bgimg">
+    <div class="header">
+        <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+                    <li><a class="login" href="/login">Login</a></li>
+        </ul>
+
+    </div>
+    <div class="title">
+        <h3 class="tagLine">Discover new Worlds</h3>
+    </div>
+</div>
+<div class="main"></div>
+<div class="footerImg">
+    <form id="formId" th:action="@{/searchPrice}">
+        <h4 class="footerLine">Find the adventure of  a lifetime</h4>
+        <div>
+            <table>
+                <tr>
+                    <td>
+            <label class="labelClass">Destination </label>
+                    </td><td>
+            <select id="loc" name="destId">
+                <option value="">Select</option>
+                <option th:each="d: ${destinationList}" th:value="${d.id}" th:text="${d.location}">Location</option>
+            </select></td>
+            <td><label class="labelClass">Price</label></td>
+           <td> <div th:if="${priceList != null}"><span  class="inputFooter" th:text="${priceList.price}"></span></div></td>
+                    <td>
+                       <label class="labelClass">Start Date:</label>
+                    </td>
+                    <td>
+                        <label class="labelClass">End Date:</label>
+                    </td>
+
+            </tr>
+            </table>
+        </div>
+    </form>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $("#loc").on("change",function(){
+            event.preventDefault();
+            var destId = $("#loc").val();
+            if(destId != ''){
+                $('#formId').submit();
+            }
+            /*$.ajax({
+                type:"get",
+                url:"/searchPrice"+"?destId="+destId,
+                success:function(){
+                    alert("success");
+
+                }
+            })*/
+        });
+
+    });
+</script>
+</body>
+</html>
